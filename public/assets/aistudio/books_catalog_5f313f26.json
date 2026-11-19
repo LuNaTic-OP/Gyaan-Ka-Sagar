@@ -1,0 +1,489 @@
+{
+  "site": "Gyaan Ka Sagar",
+  "totalBooks": 69,
+  "books": [
+    {
+      "filename": "The Crisis of the Modern World by Rene Guenon.pdf",
+      "title": "The Crisis of the Modern World",
+      "author": "René Guénon",
+      "category": "Philosophy & Traditionalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Men Among The Ruins - Julius Evola.pdf",
+      "title": "Men Among the Ruins",
+      "author": "Julius Evola",
+      "category": "Philosophy & Traditionalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Revolt Against The Modern World Politics Religion And Social Order In The Kali Yuga -Julius Evola.pdf",
+      "title": "Revolt Against the Modern World",
+      "author": "Julius Evola",
+      "category": "Philosophy & Traditionalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Choices Inside the Making of Indian Foreign Policy -Shivshankar Menon.pdf",
+      "title": "Choices: Inside the Making of Indian Foreign Policy",
+      "author": "Shivshankar Menon",
+      "category": "Geopolitics & Foreign Policy",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "India And Asian Geopolitics The Past-Present.pdf",
+      "title": "India and Asian Geopolitics: The Past, Present",
+      "author": "Shivshankar Menon",
+      "category": "Geopolitics & Foreign Policy",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "The Unending Game by Vikram Sood-z-liborg.pdf",
+      "title": "The Unending Game",
+      "author": "Vikram Sood",
+      "category": "Geopolitics & Foreign Policy",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "hind swaraj Gandhi.pdf",
+      "title": "Hind Swaraj",
+      "author": "M. K. Gandhi",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "netaji bose An Indian Pilgrim.pdf",
+      "title": "An Indian Pilgrim",
+      "author": "Subhas Chandra Bose",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "The Indian Struggle 1920-1942 - Subhas Chandra Bose.pdf",
+      "title": "The Indian Struggle 1920–1942",
+      "author": "Subhas Chandra Bose",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "How Propaganda works.pdf",
+      "title": "How Propaganda Works",
+      "author": "Jason Stanley",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "Propaganda - Edward L. Bernays.pdf",
+      "title": "Propaganda",
+      "author": "Edward L. Bernays",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Murder Of Democracy.pdf",
+      "title": "Murder of Democracy",
+      "author": "UNKNOWN - read from PDF cover",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "sati-evangelicals-baptist-missionaries-and-the-changing-colonial-discourse-9788173055522_compress.pdf",
+      "title": "Sati: Evangelicals, Baptist Missionaries and the Changing Colonial Discourse",
+      "author": "Meenakshi Jain",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "A history of economic policy in india crisis coalitions and contingency.pdf",
+      "title": "A History of Economic Policy in India: Crisis, Coalitions and Contingency",
+      "author": "UNKNOWN - read from PDF cover",
+      "category": "Economics",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "Hindu Nationalism In The Indian Diaspora -Edward T.G. Anderson.pdf",
+      "title": "Hindu Nationalism in the Indian Diaspora",
+      "author": "Edward T. G. Anderson",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "For Good Measure - Joseph E Stiglitz.pdf",
+      "title": "For Good Measure",
+      "author": "Joseph E. Stiglitz",
+      "category": "Economics",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "The Road to Freedom - Joseph E Stiglitz.pdf",
+      "title": "The Road to Freedom",
+      "author": "Joseph E. Stiglitz",
+      "category": "Economics",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "The Only Fatherland - Arun Shourie.pdf",
+      "title": "The Only Fatherland",
+      "author": "Arun Shourie",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "World Conquest in Instalments - Sita Ram Goel.pdf",
+      "title": "World Conquest in Instalments",
+      "author": "Sita Ram Goel",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "hindu-society-under-siege by Sita Ram Goel.pdf",
+      "title": "Hindu Society Under Siege",
+      "author": "Sita Ram Goel",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "The Story Of Islamic Imperialism In India by Sita Ram Goel.pdf",
+      "title": "The Story of Islamic Imperialism in India",
+      "author": "Sita Ram Goel",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "History Of The Freedom Movement In India Vol-1 by R.C Majumdar.pdf",
+      "title": "History of the Freedom Movement in India, Vol. 1",
+      "author": "R. C. Majumdar",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "History Of The Freedom Movement In India Vol2 by R.C Majumdar.pdf",
+      "title": "History of the Freedom Movement in India, Vol. 2",
+      "author": "R. C. Majumdar",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "History Of The Freedom Movement In India Vol 3 by R.C Majumdar.pdf",
+      "title": "History of the Freedom Movement in India, Vol. 3",
+      "author": "R. C. Majumdar",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "A New Idea of India - Harsh_Madhusudan.pdf",
+      "title": "A New Idea of India",
+      "author": "Harsh Madhusudan",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "Hindu Temples - What Happened to Them (2 Vol. Set) - Sita Ram Goel.pdf",
+      "title": "Hindu Temples: What Happened to Them (2 Vol. Set)",
+      "author": "Sita Ram Goel",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Perversion of India's Political Parlance - Sita Ram Goel.pdf",
+      "title": "Perversion of India's Political Parlance",
+      "author": "Sita Ram Goel",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "History of Hindu-Christian Encounters (AD 304 to 1996) -Sita Ram Goel.pdf",
+      "title": "History of Hindu-Christian Encounters (AD 304 to 1996)",
+      "author": "Sita Ram Goel",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Defence of Hindu Society - Sita Ram Goel.pdf",
+      "title": "Defence of Hindu Society",
+      "author": "Sita Ram Goel",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Freedom of Expression - Sita Ram Goel.pdf",
+      "title": "Freedom of Expression",
+      "author": "Sita Ram Goel",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "The Hindu View Of Education by Ram Swarup.pdf",
+      "title": "The Hindu View of Education",
+      "author": "Ram Swarup",
+      "category": "Hindu Thought & Civilisation",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Gandhism and Communism by Ram Swarup.pdf",
+      "title": "Gandhism and Communism",
+      "author": "Ram Swarup",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "savarkar-and-the-making-of-hindutva.pdf",
+      "title": "Savarkar and the Making of Hindutva",
+      "author": "Janaki Bakhle",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Sri-Aurobindos-Political-Thought.pdf",
+      "title": "Sri Aurobindo's Political Thought",
+      "author": "UNKNOWN - read from PDF cover",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "The World of Fatwas by Arun shourie.pdf",
+      "title": "The World of Fatwas",
+      "author": "Arun Shourie",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "pakistan-or-the-partition-of-india.pdf",
+      "title": "Pakistan or the Partition of India",
+      "author": "B. R. Ambedkar",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Why Nations Fail, The Origins o Daron Acemoglu.pdf",
+      "title": "Why Nations Fail: The Origins of Power, Prosperity and Poverty",
+      "author": "Daron Acemoglu & James A. Robinson",
+      "category": "Economics",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "How to Win an Indian Election -Shivam Shankar Singh.pdf",
+      "title": "How to Win an Indian Election",
+      "author": "Shivam Shankar Singh & Anand Venkatanarayanan",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Politics - Aristotle_9282.pdf",
+      "title": "Politics",
+      "author": "Aristotle",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "how to run a country an ancient guide for modern leaders by Cicero.pdf",
+      "title": "How to Run a Country: An Ancient Guide for Modern Leaders",
+      "author": "Cicero (trans. Philip Freeman)",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Eminent historians their technology, their line, their fraud by Arun Shourie.pdf",
+      "title": "Eminent Historians: Their Technology, Their Line, Their Fraud",
+      "author": "Arun Shourie",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Why I Am a Hindu.pdf",
+      "title": "Why I Am a Hindu",
+      "author": "Shashi Tharoor",
+      "category": "Hindu Thought & Civilisation",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "6_Glorious Epochs of indian History.pdf",
+      "title": "Six Glorious Epochs of Indian History",
+      "author": "V. D. Savarkar",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Hindu Rashtra Darshan by Savarkar.pdf",
+      "title": "Hindu Rashtra Darshan",
+      "author": "V. D. Savarkar",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Essentials of Hindutva by Savarkar.pdf",
+      "title": "Essentials of Hindutva",
+      "author": "V. D. Savarkar",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Decolonizing The Hindu Mind by Koenraad Elst (z-lib.org).pdf",
+      "title": "Decolonizing the Hindu Mind",
+      "author": "Koenraad Elst",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "muslim politics in india.pdf",
+      "title": "Muslim Politics in India",
+      "author": "UNKNOWN - read from PDF cover",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "Snakes in the Ganga Breaking India 2.0 (Rajiv Malhotra, Vijaya Viswanathan) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "title": "Snakes in the Ganga: Breaking India 2.0",
+      "author": "Rajiv Malhotra & Vijaya Viswanathan",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Breaking India (Rajeev Malhotra, Aravindan Neelakandan) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "title": "Breaking India",
+      "author": "Rajiv Malhotra & Aravindan Neelakandan",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "The-Discovery-Of-India-Jawaharlal-Nehru.pdf",
+      "title": "The Discovery of India",
+      "author": "Jawaharlal Nehru",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Genesis and Growth of Nehruism by Sita Ram Goel.pdf",
+      "title": "Genesis and Growth of Nehruism",
+      "author": "Sita Ram Goel",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "How I Became a Hindu by Sita Ram Goel.pdf",
+      "title": "How I Became a Hindu",
+      "author": "Sita Ram Goel",
+      "category": "Hindu Thought & Civilisation",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "How I became a Hindu by DavidFrawley.pdf",
+      "title": "How I Became a Hindu",
+      "author": "David Frawley",
+      "category": "Hindu Thought & Civilisation",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "The saffron tide by Nag, Kingshuk (z-lib.org).epub.pdf",
+      "title": "The Saffron Tide",
+      "author": "Kingshuk Nag",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "The Raisina model Indian democracy at 70 by Desai, Meghnad (z-lib.org).epub.pdf",
+      "title": "The Raisina Model: Indian Democracy at 70",
+      "author": "Meghnad Desai",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Republic of Hindutva How the Sangh Is Reshaping Indian Democracy by Badri Narayan (z-lib.org).epub.pdf",
+      "title": "Republic of Hindutva: How the Sangh Is Reshaping Indian Democracy",
+      "author": "Badri Narayan",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Awakening Bharat Mata The Political Beliefs of the Indian Right by Swapan Dasgupta (z-lib.org).epub.pdf",
+      "title": "Awakening Bharat Mata: The Political Beliefs of the Indian Right",
+      "author": "Swapan Dasgupta",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Hindu Nationalism A Reader by Christophe Jaffrelot (z-lib.org).pdf",
+      "title": "Hindu Nationalism: A Reader",
+      "author": "Christophe Jaffrelot",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Messengers of Hindu nationalism  how the RSS reshaped India  (aka The RSS View to the Inside) by Andersen, Walter K. Damle, Shridhar D. (z-lib.org).pdf",
+      "title": "Messengers of Hindu Nationalism: How the RSS Reshaped India",
+      "author": "Walter K. Andersen & Shridhar D. Damle",
+      "category": "Hindutva & Hindu Nationalism",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Hindu Pad Padshahi - English.pdf",
+      "title": "Hindu Pad-Padshahi",
+      "author": "V. D. Savarkar",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "gene_sharp_the_politics_of_nonviolent_action_copy.pdf",
+      "title": "The Politics of Nonviolent Action",
+      "author": "Gene Sharp",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "The_Real_Sonia_Gandhi.pdf",
+      "title": "The Real Sonia Gandhi",
+      "author": "UNKNOWN - read from PDF cover",
+      "category": "Politics & Political Thought",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "negationism-in-india-concealing-the-record-of-islam.pdf",
+      "title": "Negationism in India: Concealing the Record of Islam",
+      "author": "Koenraad Elst",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Schumpeter, Capitalism, Socialism and Democracy.pdf",
+      "title": "Capitalism, Socialism and Democracy",
+      "author": "Joseph A. Schumpeter",
+      "category": "Economics",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "The-Aryan-Invasion-Theory-Knapp.pdf",
+      "title": "The Aryan Invasion Theory",
+      "author": "Stephen Knapp",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": true
+    },
+    {
+      "filename": "Hindu Civilisation - RK Mookerji (complete).pdf",
+      "title": "Hindu Civilisation",
+      "author": "Radhakumud Mookerji",
+      "category": "Hindu Thought & Civilisation",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Indias Struggle for Independence, 1857-1947 by Bipin Chandra, Mridula Mukherjee, Aditya Mukherjee, Sucheta Mahajan, K. N. Panikkar (z-lib.org).pdf",
+      "title": "India's Struggle for Independence, 1857–1947",
+      "author": "Bipin Chandra, Mridula Mukherjee, Aditya Mukherjee, Sucheta Mahajan, K. N. Panikkar",
+      "category": "History & Freedom Movement",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "In service of the republic  the art and science of economic policy (Kelkar, Vijay L. Shah, Ajay).pdf",
+      "title": "In Service of the Republic: The Art and Science of Economic Policy",
+      "author": "Vijay Kelkar & Ajay Shah",
+      "category": "Economics",
+      "authorNeedsCheck": false
+    },
+    {
+      "filename": "Wealth, Poverty and Politics.pdf",
+      "title": "Wealth, Poverty and Politics",
+      "author": "Thomas Sowell",
+      "category": "Economics",
+      "authorNeedsCheck": true
+    }
+  ]
+}

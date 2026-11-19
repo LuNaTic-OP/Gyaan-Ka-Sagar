@@ -1,0 +1,8 @@
+{
+  "name": "Gyaan Ka Sagar",
+  "description": "Gyaan Ka Sagar, A project initiative for intellectualizing the generation and promote reading. This website's purpose is to give people free access to high-quality educational resources and curated literature.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,256 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net: Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Hardened Global Primitives
+    // ──────────────────────────────────────────────────────────────────────────
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Bootstrapped owner check strictly mandates email_verified == true (anti-spoofing)
+    function isVerifiedBootstrappedOwner() {
+      return isSignedIn()
+        && request.auth.token.email == 'saideeppoojari@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
+    // Owner check: verified bootstrapped owner OR UID explicitly registered in /admins
+    function isOwner() {
+      return isSignedIn() && (
+        isVerifiedBootstrappedOwner()
+        || exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidOptionalString(data, key, maxLen) {
+      return !(key in data) || (data[key] is string && data[key].size() <= maxLen);
+    }
+
+    function isValidOptionalInt(data, key, minVal, maxVal) {
+      return !(key in data) || (data[key] is int && data[key] >= minVal && data[key] <= maxVal);
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Validation Blueprints (synchronized verbatim with firebase-blueprint.json)
+    // ──────────────────────────────────────────────────────────────────────────
+    function isValidBook(data, bookId) {
+      return data.keys().hasAll([
+          'id', 'filename', 'title', 'author', 'category',
+          'authorNeedsCheck', 'hasPdf', 'pdfStorageType',
+          'aiGenerated', 'ownerId', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'id', 'filename', 'title', 'author', 'category',
+          'authorNeedsCheck', 'seriesName', 'volumeNumber',
+          'hasPdf', 'pdfStorageType', 'pdfStoragePath', 'pdfUrl', 'coverUrl',
+          'pageCount', 'fileSizeBytes', 'extractedPreviewText',
+          'aboutBook', 'whyWorthReading', 'aboutAuthor',
+          'aiGenerated', 'aiGeneratedAt', 'ownerId', 'createdAt', 'updatedAt'
+        ])
+        && data.id == bookId
+        && isValidId(data.id)
+        && isValidId(data.ownerId)
+        && data.filename is string && data.filename.size() >= 1 && data.filename.size() <= 300
+        && data.title is string && data.title.size() >= 1 && data.title.size() <= 300
+        && data.author is string && data.author.size() >= 1 && data.author.size() <= 250
+        && data.category is string && data.category.size() >= 1 && data.category.size() <= 120
+        && data.authorNeedsCheck is bool
+        && data.hasPdf is bool
+        && data.pdfStorageType is string && data.pdfStorageType in ['none', 'firebase', 'vault']
+        && data.aiGenerated is bool
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp
+        && isValidOptionalString(data, 'seriesName', 200)
+        && isValidOptionalInt(data, 'volumeNumber', 0, 500)
+        && isValidOptionalString(data, 'pdfStoragePath', 500)
+        && isValidOptionalString(data, 'pdfUrl', 1000)
+        && isValidOptionalString(data, 'coverUrl', 1000)
+        && isValidOptionalInt(data, 'pageCount', 0, 50000)
+        && isValidOptionalInt(data, 'fileSizeBytes', 0, 104857600)
+        && isValidOptionalString(data, 'extractedPreviewText', 8000)
+        && isValidOptionalString(data, 'aboutBook', 3000)
+        && isValidOptionalString(data, 'whyWorthReading', 3000)
+        && isValidOptionalString(data, 'aboutAuthor', 3000)
+        && isValidOptionalString(data, 'aiGeneratedAt', 40);
+    }
+
+    function isValidCategory(data, categoryId) {
+      return data.keys().hasAll(['id', 'name', 'order', 'isDefault', 'ownerId', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['id', 'name', 'order', 'isDefault', 'ownerId', 'createdAt', 'updatedAt'])
+        && data.id == categoryId
+        && isValidId(data.id)
+        && isValidId(data.ownerId)
+        && data.name is string && data.name.size() >= 1 && data.name.size() <= 120
+        && data.order is int && data.order >= 0 && data.order <= 1000
+        && data.isDefault is bool
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidLibrarySettings(data) {
+      return data.keys().hasAll(['visibility', 'seededCatalogCount', 'ownerId', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['visibility', 'seededCatalogCount', 'ownerId', 'createdAt', 'updatedAt'])
+        && data.visibility is string && data.visibility in ['private', 'read_only', 'public']
+        && data.seededCatalogCount is int && data.seededCatalogCount >= 0 && data.seededCatalogCount <= 100000
+        && isValidId(data.ownerId)
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidAdminRecord(data) {
+      return data.keys().hasAll(['role', 'createdAt'])
+        && data.keys().hasOnly(['role', 'createdAt'])
+        && data.role == 'owner'
+        && data.createdAt is timestamp;
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // Collection Rules
+    // ──────────────────────────────────────────────────────────────────────────
+
+    // Public catalog metadata & cached summaries; write/delete strictly owner-only
+    match /books/{bookId} {
+      allow get: if isValidId(bookId);
+      allow list: if true;
+
+      allow create: if isSignedIn()
+        && isValidId(bookId)
+        && isValidBook(incoming(), bookId)
+        && incoming().ownerId == request.auth.uid
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && isOwner();
+
+      allow update: if isSignedIn()
+        && isValidId(bookId)
+        && isValidBook(incoming(), bookId)
+        && incoming().ownerId == existing().ownerId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && isOwner()
+        && (
+          // Action 1: Update bibliographic metadata & category
+          incoming().diff(existing()).affectedKeys().hasOnly([
+            'filename', 'title', 'author', 'category', 'authorNeedsCheck',
+            'seriesName', 'volumeNumber', 'updatedAt'
+          ])
+          ||
+          // Action 2: Attach or replace PDF file & rendered cover
+          incoming().diff(existing()).affectedKeys().hasOnly([
+            'filename', 'hasPdf', 'pdfStorageType', 'pdfStoragePath', 'pdfUrl',
+            'coverUrl', 'pageCount', 'fileSizeBytes', 'extractedPreviewText', 'updatedAt'
+          ])
+          ||
+          // Action 3: Save or override editorial / AI summaries
+          incoming().diff(existing()).affectedKeys().hasOnly([
+            'aboutBook', 'whyWorthReading', 'aboutAuthor',
+            'aiGenerated', 'aiGeneratedAt', 'updatedAt'
+          ])
+          ||
+          // Action 4: Combined owner edit from UploadForm / ManageBooks
+          incoming().diff(existing()).affectedKeys().hasOnly([
+            'filename', 'title', 'author', 'category', 'authorNeedsCheck',
+            'seriesName', 'volumeNumber',
+            'hasPdf', 'pdfStorageType', 'pdfStoragePath', 'pdfUrl', 'coverUrl',
+            'pageCount', 'fileSizeBytes', 'extractedPreviewText',
+            'aboutBook', 'whyWorthReading', 'aboutAuthor',
+            'aiGenerated', 'aiGeneratedAt', 'updatedAt'
+          ])
+        );
+
+      allow delete: if isSignedIn()
+        && isValidId(bookId)
+        && isOwner();
+    }
+
+    // Publicly readable category list; strictly owner-only writes
+    match /categories/{categoryId} {
+      allow get: if isValidId(categoryId);
+      allow list: if true;
+
+      allow create: if isSignedIn()
+        && isValidId(categoryId)
+        && isValidCategory(incoming(), categoryId)
+        && incoming().ownerId == request.auth.uid
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && isOwner();
+
+      allow update: if isSignedIn()
+        && isValidId(categoryId)
+        && isValidCategory(incoming(), categoryId)
+        && incoming().ownerId == existing().ownerId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && isOwner()
+        && incoming().diff(existing()).affectedKeys().hasOnly(['name', 'order', 'isDefault', 'updatedAt']);
+
+      allow delete: if isSignedIn()
+        && isValidId(categoryId)
+        && isOwner();
+    }
+
+    // Non-PII singleton library visibility setting
+    match /settings/{settingId} {
+      allow get: if settingId == 'library';
+      allow list: if false;
+
+      allow create: if isSignedIn()
+        && settingId == 'library'
+        && isValidLibrarySettings(incoming())
+        && incoming().ownerId == request.auth.uid
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && isOwner();
+
+      allow update: if isSignedIn()
+        && settingId == 'library'
+        && isValidLibrarySettings(incoming())
+        && incoming().ownerId == existing().ownerId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && isOwner()
+        && incoming().diff(existing()).affectedKeys().hasOnly(['visibility', 'seededCatalogCount', 'updatedAt']);
+
+      allow delete: if false;
+    }
+
+    // Owner UID registry (no PII)
+    match /admins/{adminId} {
+      allow get: if isSignedIn()
+        && isValidId(adminId)
+        && (request.auth.uid == adminId || isVerifiedBootstrappedOwner());
+      allow list: if false;
+
+      allow create: if isVerifiedBootstrappedOwner()
+        && isValidId(adminId)
+        && isValidAdminRecord(incoming())
+        && incoming().createdAt == request.time;
+
+      allow update: if false;
+
+      allow delete: if isVerifiedBootstrappedOwner()
+        && isValidId(adminId);
+    }
+  }
+}

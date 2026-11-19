@@ -1,0 +1,50 @@
+rules_version = '2';
+
+// Firebase Storage Security Rules for Gyaan Ka Sagar
+// Enforces library visibility modes ('private' | 'read_only' | 'public') and owner-only writes.
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner() {
+      return isSignedIn() && (
+        (request.auth.token.email == 'saideeppoojari@gmail.com' && request.auth.token.email_verified == true) ||
+        firestore.exists(/databases/(default)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function libraryVisibility() {
+      return firestore.get(/databases/(default)/documents/settings/library).data.visibility;
+    }
+
+    // Rendered book cover thumbnails remain publicly readable in all modes
+    // so visitors can browse the catalog, covers, and summaries even when PDFs are Private.
+    match /covers/{bookId}/{fileName} {
+      allow read: if true;
+      allow write: if isOwner()
+        && request.resource.size <= 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+      allow delete: if isOwner();
+    }
+
+    // Full PDF files (up to 100 MB each)
+    // - Private mode: only authenticated owner may read
+    // - Read online only / Public: readable by visitors (download restriction also enforced by server-side proxy)
+    // - Write / Delete: strictly authenticated owner only
+    match /books/{bookId}/{fileName} {
+      allow read: if isOwner() || libraryVisibility() in ['public', 'read_only'];
+      allow write: if isOwner()
+        && request.resource.size <= 104857600
+        && request.resource.contentType == 'application/pdf';
+      allow delete: if isOwner();
+    }
+
+    // Default deny for all other paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
